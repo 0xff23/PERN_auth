@@ -1,2 +1,2 @@
 # PERN_auth
-PERN authentication
+PERN authentication [postgresql, express, react, nodejs]
