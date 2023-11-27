@@ -63,7 +63,7 @@ d_auth=# table users;
 }
 ```
 -----------------------------------------------------------------------
-## GET /api/login
+## POST /api/login
 ### in
 ```
 {
@@ -72,6 +72,9 @@ d_auth=# table users;
 }
 ```
 ### out:
+```
+token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJ0ZXN0NjFAZ21haWwuY29tIiwiaWF0IjoxNzAxMDQ1MzY1fQ.axlPxy1LlWPXEkobA7H7wEcCOJXMOqS3sl5PRHmMWUM; Path=/; HttpOnly
+```
 ```
 {
     "success": true,
