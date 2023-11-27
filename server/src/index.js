@@ -1,18 +1,33 @@
 const express = require("express");
 const app = express();
-const { PORT } = require("./constants");
+const { PORT, CLIENT_URL } = require("./constants");
+const cookieParser = require("cookie-parser");
+const passport = require("passport");
+const cors = require("cors");
 
-// Routes
+// Import passport middleware
+require("./middleware/passport-middleware");
+
+// Initialize middlewares
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors({ origin: CLIENT_URL, credentials: true }));
+app.use(passport.initialize());
+
+// Import routes
 const authRoutes = require("./routes/auth");
+
+// Initialize routes
 app.use("/api", authRoutes);
 
+//app start
 const appStart = () => {
 	try {
 		app.listen(PORT, () => {
-			console.log(`The app is listening on port: ${PORT}`);
+			console.log(`The app is running at http://localhost:${PORT}`);
 		});
-	} catch (err) {
-		console.log(`Error ${err.message}`);
+	} catch (error) {
+		console.log(`Error: ${error.message}`);
 	}
 };
 
